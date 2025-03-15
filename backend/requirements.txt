@@ -1,0 +1,8 @@
+flask
+flask-cors
+gunicorn
+psycopg2-binary
+pandas
+geopandas
+plotly
+python-dotenv
