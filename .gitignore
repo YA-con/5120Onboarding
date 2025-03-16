@@ -2,8 +2,6 @@ frontend/.env
 backend/.env
 frontend/node_modules/
 frontend/node_modules/.cache/
-frontend/node_modules/
-frontend/node_modules/.cache/
 frontend/node_modules/echarts/
 frontend/node_modules/typescript/
 frontend/node_modules/tailwindcss/

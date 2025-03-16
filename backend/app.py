@@ -5,7 +5,8 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
+load_dotenv(dotenv_path)
 
 app = Flask(__name__)
 CORS(app)
@@ -62,7 +63,7 @@ def get_uv_index():
     if lat is None or lng is None:
         return jsonify({"error": "Invalid location"}), 400
 
-    headers = {"x-access-token": API_KEY}
+    headers = {"x-access-token": UV_KEY}
     params = {"lat": lat, "lng": lng}
 
     try:

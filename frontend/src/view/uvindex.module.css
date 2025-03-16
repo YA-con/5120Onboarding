@@ -1,0 +1,166 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    font-size: 1.5rem;
+}
+
+.uvSection {
+    width: 100%;
+    max-width: 700px;
+    padding: 25px;
+    background: #fff;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.inputContainer {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center; 
+    justify-content: space-between; 
+    width: 100%;
+}
+
+label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    font-size: 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    padding: 15px 30px; 
+    font-size: 1.2rem;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    min-width: 180px; 
+    text-align: center;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+.uvResult {
+    border-left: 8px solid;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    margin-top: 20px;
+    font-size: 1.4rem; 
+}
+
+.skinTypeSelection {
+    margin-top: 15px;
+}
+
+.skinTypeOptions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.skinTypeBox {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.skinTypeBox.selected {
+    border: 2px solid black;
+}
+
+.skinTypeBox.fair { background-color: #ffe5d9; }
+.skinTypeBox.yellow { background-color: #f4d160; }
+.skinTypeBox.brown { background-color: #a87c5f; }
+.skinTypeBox.black { background-color: #3d2b1f; color: white; }
+
+.reminderBox {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    font-size: 1.4rem; 
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+  
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 34px;
+    transition: 0.3s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+  
+input:checked + .slider {
+    background-color: #2d67f9;
+}
+  
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+.intervalSelect label {
+    font-size: 1.5rem; 
+}
+
+.intervalSelect select {
+    padding: 12px;
+    font-size: 1.5rem;
+    border-radius: 6px;
+    border: 2px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+}
