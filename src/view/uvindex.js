@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styles from './uvindex.module.css'
+import request from '../utils/fetch'
 
 const Uvindex = () => {
     const [location, setLocation] = useState('');
@@ -16,9 +17,10 @@ const Uvindex = () => {
             return;
         }
         try {
-            const response = await fetch(
-                `http://127.0.0.1:5000/api/uv?location=${location}`);
-            const data = await response.json();
+            const data = await request.get(`/api/uv?location=${location}`)
+
+            console.log(data, 'data')
+            
             if (data.error) {
                 alert(`Error: ${data.error}`);
                 return;

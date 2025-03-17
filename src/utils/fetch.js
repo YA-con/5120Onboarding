@@ -37,7 +37,12 @@ class HttpClient {
     // get
     static async get(url, headers = {}) {
         return this.request(url, 'GET', null, headers);
-    }    
+    }
+    
+    // post
+    static async post(url, body, headers = {}) {
+        return this.request(url, 'POST', body, headers);
+    }
 }
 
 export default HttpClient
