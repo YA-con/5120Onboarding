@@ -164,3 +164,59 @@ input:checked + .slider:before {
     background: #fff;
     cursor: pointer;
 }
+
+.intervalWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 700px;
+    margin-top: 10px;
+}
+
+.selectContainer {
+    flex: 1;
+}
+
+.intervalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    width: 300px; 
+}
+
+.startBtn, .resetBtn {
+    width: 140px; 
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.startBtn {
+    background: #007BFF;
+    color: white;
+    border: none;
+}
+
+.startBtn:hover {
+    background: #0056b3;
+}
+
+.resetBtn {
+    background: white;
+    color: black;
+    border: 2px solid #ccc;
+}
+
+.resetBtn:hover {
+    background: #f8d7da;
+    border-color: #dc3545;
+}
+
+.timerDisplay {
+    margin-top: 10px;
+    text-align: left;
+}
