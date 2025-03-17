@@ -9,4 +9,6 @@ geopy
 flask_cors
 requests
 load_dotenv
+certifi
+urllib3
 python-dotenv
