@@ -67,7 +67,7 @@ def get_uv_index():
     params = {"lat": lat, "lng": lng}
 
     try:
-        response = requests.get(UV_API_URL, headers=headers, params=params)
+        response = requests.get(UV_API_URL, headers=headers, params=params, verify=False)
         data = response.json()
         uv_index = data.get("result", {}).get("uv", -1)
 
