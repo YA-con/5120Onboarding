@@ -6,5 +6,3 @@ pandas
 geopandas
 plotly
 python-dotenv
-requests
-supabase

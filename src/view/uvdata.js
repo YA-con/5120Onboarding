@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './index.module.css'
+import styles from './uvdata.module.css'
 import imageUv from '../assets/img1.jpeg'
 import imageUvMap from '../assets/img3.png'
 import LineChart from '../component/LineChart';
 
-const Index = () => {
+const Uvdata = () => {
     return (
         <main className={`${styles.main} just-between`}>
             <img src={imageUvMap} className={styles.img_uv_map} alt="uv map" />
@@ -16,4 +16,4 @@ const Index = () => {
     )
 };
 
-export default Index;
+export default Uvdata;

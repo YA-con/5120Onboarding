@@ -3,8 +3,8 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './component/Header';
 import Home from './view/home';
-import About from './view/about';
-import Index from './view';
+import Uvindex from './view/uvindex';
+import Uvdata from './view/uvdata';
 
 function App() {
     return (
@@ -13,8 +13,8 @@ function App() {
                 <Header />
                 <Routes>
                     <Route index element={<Home />} />
-                    <Route path="about" element={<About />} />
-                    <Route path="index" element={<Index />} />
+                    <Route path="uvindex" element={<Uvindex />} />
+                    <Route path="uvdata" element={<Uvdata />} />
                 </Routes>
             </Router>
         </main>

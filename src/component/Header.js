@@ -1,17 +1,22 @@
 import React from "react";
 import "./Header.css"
 import Navbar from './Navbar'
+import logo from "../assets/UV.png";
 
 const Header = () => {
     return (
-        <header className="just-between align-center header">
+      <header className="header">
+        <div className="header-content">
+          <div className="logo-section">
+            <img src={logo} alt="UV Protection Logo" className="logo-img" />
             <div>
-                <p className="title f_bold">UV Protect</p>
-                <p className="desc">Uv index tips and skin protection</p>
+              <p className="title">UV Protect</p>
             </div>
-            <Navbar />
-        </header>
-    )
-}
-
+          </div>
+          <Navbar />
+        </div>
+      </header>
+    );
+  };
+  
 export default Header
