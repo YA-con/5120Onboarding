@@ -1,6 +1,5 @@
 class HttpClient {
     static async request(url, method = 'GET', body = null, headers = {}) {
-        // 默认请求头
         const defaultHeaders = {
           'Content-Type': 'application/json',
         };
