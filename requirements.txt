@@ -5,5 +5,8 @@ psycopg2-binary
 pandas
 geopandas
 plotly
+geopy
+flask_cors
 requests
+load_dotenv
 python-dotenv
