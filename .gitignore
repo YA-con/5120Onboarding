@@ -5,3 +5,4 @@ frontend/node_modules/.cache/
 frontend/node_modules/echarts/
 frontend/node_modules/typescript/
 frontend/node_modules/tailwindcss/
+.DS_Store
