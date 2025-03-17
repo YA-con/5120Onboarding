@@ -5,12 +5,6 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import os
 
-import ssl
-import certifi
-import urllib3
-
-ctx = ssl.create_default_context(cafile=certifi.where())
-
 dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
 load_dotenv(dotenv_path)
 
@@ -73,7 +67,7 @@ def get_uv_index():
     params = {"lat": lat, "lng": lng}
 
     try:
-        response = requests.get(UV_API_URL, headers=headers, params=params, verify=certifi.where())
+        response = requests.get(UV_API_URL, headers=headers, params=params)
         data = response.json()
         uv_index = data.get("result", {}).get("uv", -1)
 
