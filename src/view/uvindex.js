@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './uvindex.module.css'
-import request from '../utils/fetch'
 
 const Uvindex = () => {
     const [location, setLocation] = useState('');
@@ -16,19 +15,30 @@ const Uvindex = () => {
             alert("Please enter a city name");
             return;
         }
-        try {
-            const data = await request.get(`/api/uv?location=${location}`)
-
-            console.log(data, 'data')
-            
-            if (data.error) {
-                alert(`Error: ${data.error}`);
-                return;
+        const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location)}.json?access_token=pk.eyJ1IjoieXpoYTA0OTciLCJhIjoiY20wZDg2OXo5MGJuMTJpb3Jpd3kzZGpwbyJ9.krpIVomqpNj7Kt0BiHsLEA`;
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.features && data.features.length > 0) {
+                const coordinates = data.features[0].center; // [longitude, latitude]
+                const longitude = coordinates[0];
+                const latitude = coordinates[1];
+                console.log(`City: ${location}`);
+                console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+                const headers = { 'x-access-token' : 'openuv-3vhburm88u635p-io' }
+                return fetch(`https://api.openuv.io/api/v1/uv?lat=${latitude}&lng=${longitude}`, {
+                    headers,
+                })
+            } else {
+                console.error("No results found for the city:", location);
             }
-            setUvData(data);
-        } catch (error) {
-            console.error("Error fetching UV index:", error);
-        }
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data, 'data')
+            setUvData(data.result);
+        })
+        .catch(error => console.error("Error fetching data:", error));
     };
 
     //Set different color of different uv levels
@@ -119,7 +129,7 @@ const Uvindex = () => {
 
     //Alert high uv index
     useEffect(() => {
-        if (uvData && uvData.uv_index >= 8) {
+        if (uvData && uvData.uv >= 8) {
             alert("High UV index detected! Apply sunscreen and seek shade.");
         }
     }, [uvData]);
@@ -140,10 +150,19 @@ const Uvindex = () => {
                 </div>
 
                 {uvData && (
-                    <div className={styles.uvResult} style={{ borderColor: getUVColor(uvData.uv_index) }}>
-                        <p><strong>{uvData.location}</strong></p>
-                        <p style={{ color: getUVColor(uvData.uv_index), fontWeight: 'bold'  }}>UV Index: {uvData.uv_index.toFixed(1)}</p>
-                        <p>{uvData.advice}</p>
+                    <div>
+                        <div className={styles.uvResult} style={{ borderColor: getUVColor(uvData.uv) }}>
+                            <p><strong>{uvData.location}</strong></p>
+                            <p style={{ color: getUVColor(uvData.uv), fontWeight: 'bold'  }}>UV Index: {uvData.uv}</p>
+                            <p>{uvData.advice}</p>
+                        </div>
+
+                        <div className={`flex ${ styles.uvResult }`} style={{ borderColor: getUVColor(uvData.uv_max) }}>
+                            <p><strong>{uvData.location}</strong></p>
+                            <p style={{ color: getUVColor(uvData.uv_max), fontWeight: 'bold'  }}>UV Max: {uvData.uv_max}</p>
+                            <p>{uvData.advice}</p>
+                            <p className='ml-auto' style={{ color: getUVColor(uvData.uv_max), fontWeight: 'bold'  }}>UV Max Time: {uvData.uv_max_time}</p>
+                        </div>
                     </div>
                 )}
 
@@ -166,11 +185,11 @@ const Uvindex = () => {
                 </div>
 
                 {uvData && showAdvice && (
-                    <div className={styles.uvResult} style={{ borderColor: getUVColor(uvData.uv_index) }}>
+                    <div className={styles.uvResult} style={{ borderColor: getUVColor(uvData.uv) }}>
                         <h3>Sun Protection Advice</h3>
-                        <p><strong>{getSunProtectionAdvice(uvData.uv_index, skinType).exposureTime}</strong></p>
-                        <p>{getSunProtectionAdvice(uvData.uv_index, skinType).sunscreen}</p>
-                        <p>{getSunProtectionAdvice(uvData.uv_index, skinType).clothing}</p>
+                        <p><strong>{getSunProtectionAdvice(uvData.uv, skinType).exposureTime}</strong></p>
+                        <p>{getSunProtectionAdvice(uvData.uv, skinType).sunscreen}</p>
+                        <p>{getSunProtectionAdvice(uvData.uv, skinType).clothing}</p>
                     </div>
                 )}
 
