@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 
-const LineChart = () => {
-  const chartRef = useRef(null); 
+const LineChart = (prop) => {
+  const chartRef = useRef(null);
 
   useEffect(() => {
     const myChart = echarts.init(chartRef.current);
-
+    
     const option = {
       title: {
         text: 'Ultraviolet index',
@@ -25,7 +25,7 @@ const LineChart = () => {
         {
           name: 'UV',
           type: 'line',
-          data: [0,1,1,1,1,3,5,6,8,9,10,11,11,11,10,9,8,6,4,3,4,3,2,1],
+          data: prop.chartData,
         },
       ],
     };
